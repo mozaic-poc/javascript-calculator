@@ -2,12 +2,6 @@
 #
 # Deploy to AWS CloudFormation
 #
-<<<<<<< HEAD
-# DEM-4 - fixed
-=======
-# DEM-16 - fixed
-# DEM-16 - fixed
->>>>>>> cb3fb11... DEM-16: fixed
 
 set -ex
 
