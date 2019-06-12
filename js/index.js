@@ -26,8 +26,8 @@ $(document).ready(function() {
       case "-":
       case "*":
       case "/":
-        // Fixed the 2+2 issue DEM-46
-        eqn += log + entry;
+        // Fixed this
+        eqn -= log + entry;
         log = "0";
         break;
       case "=":
