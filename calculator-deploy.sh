@@ -49,4 +49,4 @@ if [ x"$UPDATE_ONLY" = x'false' ]; then
 	aws cloudformation wait stack-create-complete --stack-name "$STACK_NAME"
 fi
 
-aws s3 sync --delete . s3://$BucketName/htdocs/ --exclude '.git/*' --exclude Jenkinsfile --exclude calculator-deploy.sh
+aws s3 sync --delete . s3://$BucketName/ --exclude '.git/*' --exclude .gitignore --exclude Jenkinsfile --exclude calculator-deploy.sh
