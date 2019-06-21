@@ -15,7 +15,7 @@ $(document).ready(function() {
       case ".":
         log += ".";
         break;
-      case "CE ":
+      case "CX":
         if (log.length <= 1) {
           log = "0";
         } else {
@@ -26,8 +26,8 @@ $(document).ready(function() {
       case "-":
       case "*":
       case "/":
-        // Fixed it again
-        eqn += log + entry;
+        // Fixed this
+        eqn -= log + entry;
         log = "0";
         break;
       case "=":
