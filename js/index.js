@@ -27,7 +27,7 @@ $(document).ready(function() {
       case "*":
       case "/":
         // Fixed this
-        eqn -= log + entry;
+        eqn += log + entry;
         log = "0";
         break;
       case "=":
