@@ -15,7 +15,7 @@ $(document).ready(function() {
       case ".":
         log += ".";
         break;
-      case "CX":
+      case "CE ":
         if (log.length <= 1) {
           log = "0";
         } else {
