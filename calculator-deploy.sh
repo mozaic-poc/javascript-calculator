@@ -31,10 +31,12 @@ EOF
 	echo ']' >>parameters.json
 fi
 
-if [ x"$UPDATE_ONLY" = x'false' ]; then
-	if aws --output text --query "StackSummaries[?StackName == '$STACK_NAME' && StackStatus != 'DELETE_COMPLETE'].StackName" cloudformation list-stacks | grep -E "^$STACK_NAME$"; then
-		# Stack exists
+if aws --output text --query "StackSummaries[?StackName == '$STACK_NAME' && StackStatus != 'DELETE_COMPLETE'].StackName" cloudformation list-stacks | grep -E "^$STACK_NAME$"; then
+	STACK_EXISTS=1
+fi
 
+if [ x"$REDEPLOY" = x'true' -o -z "$STACK_EXISTS" ]; then
+	if [ -n "$STACK_EXISTS" ]; then
 		# Empty bucket if it exists
 		aws s3 ls "s3://$BucketName" && aws s3 rm --recursive "s3://$BucketName" || :
 
@@ -49,4 +51,4 @@ if [ x"$UPDATE_ONLY" = x'false' ]; then
 	aws cloudformation wait stack-create-complete --stack-name "$STACK_NAME"
 fi
 
-aws s3 sync --delete . s3://$BucketName/htdocs/ --exclude calculator-deploy.sh --exclude '.git/*' --exclude Jenkinsfile --exclude calculator-deploy.sh
+aws s3 sync --acl public-read --delete . "s3://$BucketName/" --exclude '.git/*' --exclude .gitignore --exclude Jenkinsfile --exclude calculator-deploy.sh --exclude parameters.json
