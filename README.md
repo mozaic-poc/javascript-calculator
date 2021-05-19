@@ -1,6 +1,6 @@
 # Javascript Calculator
 
-A simple web calculator made entirely in HTML5, CSS3 and Javascript (jQuery). Features chained operations., and a history log.
+A simple web calculator made entirely in HTML5, CSS3 and Javascript (jQuery). Features chained operations., and a history log...
 
 ![alt text](https://caleb-ellis.github.io/assets/img/calculator.jpg)
 
