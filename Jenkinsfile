@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     options {
-        withAWS(profile: 'S3 Bucket Access')
+    	withAWS(credentials: 'S3 Access')
     }
 
     stages {
@@ -20,6 +20,13 @@ pipeline {
                 )
             }
         }
+
+        stage('Wait for approval') {
+            steps {
+                snDevOpsChange()
+            }
+        }
+
         stage('Deploy to Production') {
             steps {
                 s3Upload(
